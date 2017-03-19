@@ -1,5 +1,4 @@
 ﻿<%@ page pageEncoding="UTF-8"%>
-<%@ taglib prefix="s" uri="/struts-tags" %>
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -82,13 +81,17 @@
 
 					<ul class="nav nav-list">
 						<li class="active">
-							<a href="index.html">
+							<a id="reloadIndex" href="javascript:void(0);">
 								<i class="icon-dashboard"></i>
 								<span class="menu-text"> 控制台 </span>
 							</a>
+							<script type="text/javascript">
+								document.getElementById("reloadIndex").onclick = function () {
+									window.top.location.href = "${pageContext.request.contextPath}/home/index.do";
+								}
+							</script>
 						</li>
 
-						
 						<s:iterator value="#privileges">
 							<li>
 								<a href="#" class="dropdown-toggle">
@@ -146,8 +149,7 @@
 					</div>
 				<!-- 内容区 -->
 				<div>
-				<iframe src="https://www.baidu.com/"  frameborder="0" marginheight="0" marginwidth="0" frameborder="0" scrolling="no" id="ifm" name="ifm" onload="iFrameHeight()"  width="100%" height="1080px"></iframe>
-						
+				<iframe src="${pageContext.request.contextPath }/home/welcome.do"  frameborder="0" marginheight="0" marginwidth="0" frameborder="0" scrolling="no" id="ifm" name="ifm" onload="iFrameHeight()"  width="100%" height="1080px"></iframe>
 				<script type="text/javascript" language="javascript">
 					function iFrameHeight() {
 						var ifm = document.getElementById("ifm");

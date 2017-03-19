@@ -50,4 +50,16 @@ public class HomeAction extends ActionSupport {
 		return "index";
 	}
 	
+
+	@Action(
+			value="/welcome",
+			results={
+						@Result(name="welcome",location="/WEB-INF/view/home/welcome.jsp")
+			}
+		)
+	public String welcome() {
+		
+		return "welcome";
+	}
+	
 }

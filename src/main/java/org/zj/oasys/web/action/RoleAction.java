@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import org.zj.oasys.domain.Account;
+import org.zj.oasys.domain.Role;
 import org.zj.oasys.service.IAccountService;
 
 import com.opensymphony.xwork2.ActionSupport;
@@ -24,24 +25,24 @@ import com.opensymphony.xwork2.ModelDriven;
 				@Result(name = "error", location = "/error.jsp")
 			}
 		) 
-
 @ExceptionMappings( { @ExceptionMapping(exception = "java.lang.RuntimeException", result = "error") }) 
-public class AccountAction extends ActionSupport implements ModelDriven<Account>{
+public class RoleAction extends ActionSupport implements ModelDriven<Role>{
 	
-	private Account account = new Account();
+	private Role role = new Role();
 	@Action(
-			value="account_list",
+			value="role_list",
 			results={
-						@Result(name="list",location="/WEB-INF/view/account/list.jsp")
+						@Result(name="list",location="/WEB-INF/view/role/list.jsp")
 			}
 		)
 	public String list() {
 		return "list";
 	}
 
-	public Account getModel() {
+	@Override
+	public Role getModel() {
 		
-		return account;
+		return role;
 	}
 	
 	
