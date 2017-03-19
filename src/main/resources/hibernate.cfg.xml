@@ -11,10 +11,15 @@
 
 	<!-- 其他配置信息 -->
 	<property name="show_sql">true</property>
+	<property name="format_sql">true</property>
 	<property name="hbm2ddl.auto">update</property>
 
 	<!-- 声明映射文件 -->
 	<mapping class="org.zj.oasys.domain.User"/>
+	<mapping class="org.zj.oasys.domain.Account"/>
+	<mapping class="org.zj.oasys.domain.Role"/>
+	<mapping class="org.zj.oasys.domain.Privilege"/>
+	<mapping class="org.zj.oasys.domain.Department"/>
 
 </session-factory>
 </hibernate-configuration>
