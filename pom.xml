@@ -7,7 +7,7 @@
 	<packaging>war</packaging>
 
 	<properties>
-		<struts-version>2.5.10</struts-version>
+		<struts-version>2.5.10.1</struts-version>
 		<spring-version>4.2.0.RELEASE</spring-version>
 		<hibernate-version>5.2.5.Final</hibernate-version>
 		<aopalliance-version>1.0</aopalliance-version>
