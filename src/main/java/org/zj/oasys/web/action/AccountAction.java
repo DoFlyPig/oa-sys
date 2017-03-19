@@ -1,7 +1,5 @@
 package org.zj.oasys.web.action;
 
-import java.util.List;
-
 import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.ExceptionMapping;
 import org.apache.struts2.convention.annotation.ExceptionMappings;
@@ -12,16 +10,16 @@ import org.apache.struts2.convention.annotation.Results;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
-import org.zj.oasys.domain.Privilege;
-import org.zj.oasys.service.IPrivilegeService;
+import org.zj.oasys.domain.Account;
+import org.zj.oasys.service.IAccountService;
 
-import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
+import com.opensymphony.xwork2.ModelDriven;
 
 @Controller
 @Scope(value="prototype")
 @ParentPackage("struts-default")
-@Namespace("/home")
+@Namespace("/account")
 @Results( 
 			{ 
 				@Result(name = "error", location = "/error.jsp")
@@ -29,25 +27,23 @@ import com.opensymphony.xwork2.ActionSupport;
 		) 
 
 @ExceptionMappings( { @ExceptionMapping(exception = "java.lang.RuntimeException", result = "error") }) 
-public class HomeAction extends ActionSupport {
-
-	@Autowired
-	private IPrivilegeService privilegeService;
+public class AccountAction extends ActionSupport implements ModelDriven<Account>{
 	
-	
+	private Account account = new Account();
 	@Action(
-			value="/index",
+			value="account_list",
 			results={
-						@Result(name="index",location="/WEB-INF/view/home/index.jsp")
+						@Result(name="list",location="/WEB-INF/view/account/list.jsp")
 			}
 		)
-	public String index() {
-		
-		List<Privilege> privileges = privilegeService.findTopmenus();
-			
-		ActionContext.getContext().put("privileges", privileges);
-		
-		return "index";
+	public String list() {
+		return "list";
 	}
+
+	public Account getModel() {
+		
+		return account;
+	}
+	
 	
 }

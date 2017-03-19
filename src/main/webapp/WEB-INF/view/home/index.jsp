@@ -1,4 +1,5 @@
 ﻿<%@ page pageEncoding="UTF-8"%>
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -87,32 +88,28 @@
 							</a>
 						</li>
 
-
-						<li>
-							<a href="#" class="dropdown-toggle">
-								<i class="icon-desktop"></i>
-								<span class="menu-text"> UI 组件 </span>
-
-								<b class="arrow icon-angle-down"></b>
-							</a>
-
-							<ul class="submenu">
-								<li>
-									<a href="elements.html">
-										<i class="icon-double-angle-right"></i>
-										组件
-									</a>
-								</li>
-
-								<li>
-									<a href="buttons.html">
-										<i class="icon-double-angle-right"></i>
-										按钮 &amp; 图表
-									</a>
-								</li>
-							</ul>
-							
-						</li>
+						
+						<s:iterator value="#privileges">
+							<li>
+								<a href="#" class="dropdown-toggle">
+									<i class="icon-desktop"></i>
+									<span class="menu-text"> <s:property value="name"/> </span>
+	
+									<b class="arrow icon-angle-down"></b>
+								</a>
+	
+								<ul class="submenu">
+									<s:iterator value="%{childs}">
+										<li>
+											<a href=${pageContext.request.contextPath }<s:property value="url"/>> 
+												<i class="icon-double-angle-right"></i>
+												<s:property value="name"/>
+											</a>
+										</li>
+									</s:iterator>
+								</ul>
+							</li>						
+						</s:iterator>
 					</ul><!-- /.nav-list -->
 
 					<div class="sidebar-collapse" id="sidebar-collapse">

@@ -16,6 +16,9 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
+
 /**
  * @author Administrator
  *
@@ -23,19 +26,46 @@ import javax.persistence.Table;
 @Entity
 @Table(name="tb_privilege")
 public class Privilege implements Serializable{
+	
 	private Long id;
 	private String name;
 	private String code;
 	private String url;
 	private String icon;
-	private Integer status;
-	private String type;
+	private Integer status;   // 0 ： 启用   1：未启用
+	private Integer type;     //0：模块  1：功能  2：操作
 	private Integer order;
 	private Privilege parent;
 	private Set<Privilege> childs = new HashSet<>();
 	
 	private Set<Role> roles = new HashSet<>();
 	
+	
+	public Privilege() {
+	}
+	
+	
+	
+	
+	
+	public Privilege(String name, String code, String url, String icon, Integer status, Integer type, Integer order,
+			Privilege parent) {
+		
+		this.name = name;
+		this.code = code;
+		this.url = url;
+		this.icon = icon;
+		this.status = status;
+		this.type = type;
+		this.order = order;
+		this.parent = parent;
+		
+	}
+
+
+
+
+
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	public Long getId() {
@@ -82,10 +112,10 @@ public class Privilege implements Serializable{
 		this.status = status;
 	}
 	@Column(name="type")
-	public String getType() {
+	public Integer getType() {
 		return type;
 	}
-	public void setType(String type) {
+	public void setType(Integer type) {
 		this.type = type;
 	}
 	@Column(name="order_")

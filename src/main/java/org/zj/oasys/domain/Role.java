@@ -21,7 +21,7 @@ public class Role implements Serializable {
 	private Long id;
 	private String name;
 	private String description;
-	private Integer status;
+	private Integer status;   // 0 ： 启用   1：未启用
 
 	private Set<Account> accounts = new HashSet<>();
 	private Set<Privilege> privileges = new HashSet<>();

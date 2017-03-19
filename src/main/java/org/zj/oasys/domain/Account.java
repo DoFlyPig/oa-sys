@@ -29,6 +29,7 @@ public class Account implements Serializable {
 	private Date birthday;
 	private String phone;
 	private String address;
+	private Integer status;   // 0 ： 在职   1：请假  2：离职
 	private Department department;
 	private Set<Role> roles = new HashSet<Role>();
 	
@@ -98,6 +99,12 @@ public class Account implements Serializable {
 	}
 	public void setRoles(Set<Role> roles) {
 		this.roles = roles;
+	}
+	public Integer getStatus() {
+		return status;
+	}
+	public void setStatus(Integer status) {
+		this.status = status;
 	}
 	
 }
